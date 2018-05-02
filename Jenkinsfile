@@ -6,7 +6,9 @@ pipeline {
     stages {
     stage ('Build') {
             steps {
+                checkout scm
                 echo 'This is a minimal pipeline.'
+                sh 'mvn package'
             }
         }
     }
