@@ -4,18 +4,20 @@ pipeline {
         maven 'Maven 3.5' 
     }
     stages {
-    stage ('Build') {
+        stage ('Build') {
             steps {
                 checkout scm
                 echo 'This is a minimal pipeline.'
                 sh 'mvn package'
             }
-        stage ('print') {
-        dir ('/home/ubuntu/')
-       steps {
-        sh('print.sh')
-       }
         }
-      }
-   }
+        stage ('print') {
+            dir ('/home/ubuntu/')
+                steps {
+                    sh('print.sh') 
+                }
+        }
+    }
 }
+       
+       
