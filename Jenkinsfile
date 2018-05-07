@@ -12,9 +12,8 @@ pipeline {
             }
         }
         stage ('print') {
-            dir ('/home/ubuntu/')
-                steps {
-                    sh('print.sh') 
+            steps {
+                  sh('/home/ubuntu/print.sh') 
                 }
         }
     }
