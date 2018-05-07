@@ -10,7 +10,7 @@ pipeline {
                 echo 'This is a minimal pipeline.'
                 sh 'mvn package'
             }
-     stage "Build Pex"
+     stage ('print')
         dir ('/home/ubuntu/')
        steps {
         sh('print.sh')
