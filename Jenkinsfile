@@ -10,11 +10,12 @@ pipeline {
                 echo 'This is a minimal pipeline.'
                 sh 'mvn package'
             }
-     stage ('print')
+        stage ('print') {
         dir ('/home/ubuntu/')
        steps {
         sh('print.sh')
+       }
         }
-        }
-    }
+      }
+   }
 }
