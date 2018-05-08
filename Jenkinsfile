@@ -14,7 +14,7 @@ pipeline {
         stage ('print') {
             steps {
                   sh('/home/ubuntu/print.sh')
-                  sh(python '/home/ubuntu/start.py')  
+                  sh('python /home/ubuntu/start.py')  
                 }
         }
     }
