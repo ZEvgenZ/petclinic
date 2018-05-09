@@ -7,13 +7,13 @@ pipeline {
     AWS_BIN = '/home/ec2-user/.local/bin/aws'
     }
     stages {
-        stage ('Build') {
+       /* stage ('Build') {
             steps {
                 checkout scm
                 echo 'This is a minimal pipeline.'
                 sh 'mvn package'
             }
-        }
+        }*/
         stage ('create inst') {
             steps {
                 withCredentials([[
@@ -24,8 +24,8 @@ pipeline {
         ]]) {
             sh 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=us-west-2 ${AWS_BIN} ec2 some-magic-commands'
             sh 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=us-west-2 ${AWS_BIN} ec2 some-other-magic-commands'
-			sh('/home/ubuntu/print.sh')
-            sh('python /home/ubuntu/start.py') 
+	    sh('/home/ubuntu/print.sh')
+            //sh('python /home/ubuntu/start.py') 
 			}
                    
           
