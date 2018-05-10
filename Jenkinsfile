@@ -1,5 +1,5 @@
 pipeline {
-    agent worker01
+        agent {label "worker01"}
     tools { 
         maven 'Maven 3.5' 
     }
