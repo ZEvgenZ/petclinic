@@ -32,7 +32,10 @@ pipeline {
           
         }
     }*/
-            stage ('Build') { steps { { sh ('echo hello') } } }
+            stage ('Build') { 
+                    steps { 
+                             sh ('echo hello') }
+            } 
     }
 }
 
