@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent worker01
     tools { 
         maven 'Maven 3.5' 
     }
