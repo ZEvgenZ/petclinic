@@ -19,7 +19,7 @@ instances = ec2.create_instances(
         InstanceType="t2.micro",
     KeyName='oRudenk',
     # subnet = ec2.Subnet('subnet-c8fc75b1')
-    NetworkInterfaces=[{'SubnetId': subnet, 'DeviceIndex': 0, 'AssociatePublicI$'}]
+    NetworkInterfaces=[{'SubnetId': subnet, 'DeviceIndex': 0, 'AssociatePublicIpAddress': True, 'Groups': ['sg-6f437411']}])
     # key_name="oRudenk"
 )
 #i = 0
