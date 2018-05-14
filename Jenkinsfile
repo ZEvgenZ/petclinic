@@ -3,9 +3,9 @@ pipeline {
     tools { 
         maven 'Maven 3.5' 
     }
-    /* environment {
+     environment {
     AWS_BIN = '/home/ec2-user/.local/bin/aws'
-    }*/
+    }
     stages {
         stage ('Build') {
             steps {
@@ -14,8 +14,11 @@ pipeline {
                 sh 'mvn package'
             }
         }
-       /* stage ('create inst') {
-            steps {
+        stage ('create inst') {
+            agent {
+                 label 'master'
+             }
+                steps {
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
             credentialsId: 'ada1da8c-6363-4223-9c2f-93684d18989a',
