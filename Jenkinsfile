@@ -15,10 +15,7 @@ pipeline {
             }
         }
         stage ('create inst') {
-            agent {
-                 label 'master'
-             }
-                steps {
+              steps {
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
             credentialsId: 'ada1da8c-6363-4223-9c2f-93684d18989a',
