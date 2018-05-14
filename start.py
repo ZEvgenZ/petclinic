@@ -30,5 +30,3 @@ for instance in instances:
 #i = i+1
 for instance in instances:
     print(instance.id, instance.instance_type, instance.vpc)
-
-
