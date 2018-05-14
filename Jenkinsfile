@@ -3,9 +3,9 @@ pipeline {
     tools { 
         maven 'Maven 3.5' 
     }
-     environment {
-    //AWS_BIN = '/home/ec2-user/.local/bin/aws'
-    }
+    /* environment {
+    AWS_BIN = '/home/ec2-user/.local/bin/aws'
+    }*/
     stages {
         /*stage ('Build') {
             steps {
