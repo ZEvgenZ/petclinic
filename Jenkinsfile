@@ -26,7 +26,7 @@ pipeline {
             //sh ('AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=us-west-2 ${AWS_BIN}')
 	    //sh('/home/ubuntu/print.sh')
                         withAWS(region:'us-west-2'){
-                                sh('python3 ~/workspace/petclinic/start.py')} 
+                                sh('python3 start.py')} 
 			}
                    
           
