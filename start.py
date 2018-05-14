@@ -1,4 +1,4 @@
-!/usr/bin/env python
+#!/usr/bin/env python
 
 import boto3
 low_level_client = boto3.client('ec2')
