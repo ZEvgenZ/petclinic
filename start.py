@@ -29,7 +29,7 @@ for instance in instances:
 i=0
 for instance in instances:
     print(instance.id, instance.instance_type, instance.vpc, instance.private_ip_address, instance.public_ip_address)
-    f = open('text.txt', 'a') 
+    f = open('hosts', 'a') 
     f.write("[%s]" % (work[i]) + '\n' + instance.private_ip_address + '\n' ) 
     f.close()
     i = i+1 
