@@ -2,8 +2,7 @@ pipeline {
         agent {label "worker1"}
     tools { 
         maven 'Maven 3.5'
-        Ansible 'Ans1'
-    }
+      }
     /* environment {
     AWS_BIN = '/home/ec2-user/.local/bin/aws'
     }*/
@@ -30,7 +29,16 @@ pipeline {
                                 sh('python3 start.py')} 
 			}
                    
-          
+          stage('Ansible') { 
+   steps {
+        ansiblePlaybook(
+        playbook: '~/sql_l.yml',
+        inventory: '~/hosts',
+        installation: 'Ans1',
+        credentialsId: '1',
+        become: true)
+    }
+   }
         }
     }
            /* stage ('Build') { 
