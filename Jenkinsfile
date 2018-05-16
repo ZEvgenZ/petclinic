@@ -44,7 +44,7 @@ pipeline {
             stage ('Bsssss') { 
                     steps { 
                 ansiblePlaybook(
-                playbook: '~/sql_l.yml',
+                playbook: 'sql_l.yml',
                 inventory: '~/hosts',
                 installation: 'Ans1',
                 credentialsId: '1',
