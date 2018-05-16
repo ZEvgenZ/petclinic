@@ -41,7 +41,7 @@ pipeline {
    }*/
         }
     }
-            stage ('Start_Ansible') { 
+           /*  stage ('Start_Ansible') { 
                     steps { 
                 ansiblePlaybook(
                 playbook: 'sql_l.yml',
@@ -49,7 +49,7 @@ pipeline {
                 installation: 'Ans1',
                 credentialsId: 'sshu',
                 become: true) }
-            } 
+            } */
     }
 }
 
