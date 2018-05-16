@@ -33,14 +33,13 @@ pipeline {
     }*/
              stage ('Start_Ansible') { 
                     steps {
-                            withCredentials([sshUserPrivateKey(credentialsId: "sshu", keyFileVariable: 'keyfile'), ]){        
-                                        
+                             
                 ansiblePlaybook(
                 playbook: 'sql_l.yml',
                 inventory: 'hosts',
                 installation: 'Ans1',
                 credentialsId: 'sshu',
-                disableHostKeyChecking: true) }}
+                disableHostKeyChecking: true) }
             } 
     }
 }
