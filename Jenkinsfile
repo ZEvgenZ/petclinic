@@ -1,7 +1,8 @@
 pipeline {
         agent {label "worker1"}
     tools { 
-        maven 'Maven 3.5' 
+        maven 'Maven 3.5'
+        ansible 'Ans1'
     }
     /* environment {
     AWS_BIN = '/home/ec2-user/.local/bin/aws'
