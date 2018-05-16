@@ -41,7 +41,7 @@ pipeline {
    }*/
         }
     }
-            stage ('Bsssss') { 
+            stage ('Start_Ansible') { 
                     steps { 
                 ansiblePlaybook(
                 playbook: 'sql_l.yml',
