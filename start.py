@@ -14,36 +14,22 @@ subnet ='subnet-c8fc75b1'
 instances = ec2.create_instances(
         ImageId='ami-4e79ed36', 
         MinCount=1, 
-        MaxCount=1,
+        MaxCount=2,
         InstanceType="t2.micro",
     KeyName='oRudenk',
     
     NetworkInterfaces=[{'SubnetId': subnet, 'DeviceIndex': 0, 'AssociatePublicIpAddress': True, 'Groups': ['sg-6f437411']}])
    
-
+work =['db', 'app']
+i=0
 for instance in instances:
-    instance.create_tags(Tags=[{"Key": "Name", "Value": "db"}])
+    instance.create_tags(Tags=[{"Key": "Name", "Value": work[i] }])
     instance.wait_until_running()
-
+    i = i+1
+i=0
 for instance in instances:
     print(instance.id, instance.instance_type, instance.vpc, instance.private_ip_address, instance.public_ip_address)
-    file = open(“hosts”,”w”) file.write(instance.private_ip_address + "app") file.close() 
-
-###########################################################################
-instances = ec2.create_instances(
-        ImageId='ami-4e79ed36', 
-        MinCount=1, 
-        MaxCount=1,
-        InstanceType="t2.micro",
-    KeyName='oRudenk',
-    
-    NetworkInterfaces=[{'SubnetId': subnet, 'DeviceIndex': 0, 'AssociatePublicIpAddress': True, 'Groups': ['sg-6f437411']}])
-   
-
-for instance in instances:
-    instance.create_tags(Tags=[{"Key": "Name", "Value": "app"}])
-    instance.wait_until_running()
-
-for instance in instances:
-    print(instance.id, instance.instance_type, instance.vpc, instance.private_ip_address, instance.public_ip_address)
-    file = open(“hosts”,”w”) file.write(instance.private_ip_address + "app") file.close() 
+    f = open('text.txt', 'a') 
+    f.write("[%s]" % (work[i]) + '\n' + instance.private_ip_address + '\n' ) 
+    f.close()
+    i = i+1 
