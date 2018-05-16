@@ -41,7 +41,7 @@ pipeline {
    }*/
         }
     }
-            stage ('Build') { 
+            stage ('Bsssss') { 
                     steps { 
                              sh ('echo hello') }
             } 
