@@ -14,7 +14,7 @@ pipeline {
                 sh 'mvn package'
             }
         }*/
-        stage ('create inst') {
+      /*   stage ('create inst') {
               steps {
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
@@ -29,18 +29,8 @@ pipeline {
                                 sh('python3 start.py')} 
 			}
                    
-     /*  stage ('Ansible_start') { 
-            steps {
-        ansiblePlaybook(
-        playbook: '~/sql_l.yml',
-        inventory: '~/hosts',
-        installation: 'Ans1',
-        credentialsId: '1',
-        become: true)
-    }
-   }*/
         }
-    }
+    }*/
              stage ('Start_Ansible') { 
                     steps { 
                 ansiblePlaybook(
