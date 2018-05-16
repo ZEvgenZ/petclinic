@@ -47,7 +47,7 @@ pipeline {
                 playbook: 'sql_l.yml',
                 inventory: '~/hosts',
                 installation: 'Ans1',
-                credentialsId: '1',
+                credentialsId: 'sshu',
                 become: true) }
             } 
     }
