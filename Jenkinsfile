@@ -38,7 +38,7 @@ pipeline {
                 inventory: 'hosts',
                 installation: 'Ans1',
                 credentialsId: 'sshu',
-                become: true) }
+                become: true, disableHostKeyChecking: true) }
             } 
     }
 }
