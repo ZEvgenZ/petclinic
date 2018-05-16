@@ -3,6 +3,9 @@
   #become_method: sudo
   become: yes
   tasks:
+    
+    - name: install python 2
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
     # - name: Transfer the script
     #   copy: src=var.sh dest=/home mode=0777
 
