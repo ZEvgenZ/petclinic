@@ -29,8 +29,8 @@ pipeline {
                                 sh('python3 start.py')} 
 			}
                    
-    stage ('Ansible_start') { 
-           steps {
+      stage ('Ansible_start') { 
+            steps {
         ansiblePlaybook(
         playbook: '~/sql_l.yml',
         inventory: '~/hosts',
