@@ -29,7 +29,7 @@ pipeline {
                                 sh('python3 start.py')} 
 			}
                    
-      stage ('Ansible_start') { 
+     /*  stage ('Ansible_start') { 
             steps {
         ansiblePlaybook(
         playbook: '~/sql_l.yml',
@@ -38,13 +38,13 @@ pipeline {
         credentialsId: '1',
         become: true)
     }
-   }
+   }*/
         }
     }
-           /* stage ('Build') { 
+            stage ('Build') { 
                     steps { 
                              sh ('echo hello') }
-            } */
+            } 
     }
 }
 
