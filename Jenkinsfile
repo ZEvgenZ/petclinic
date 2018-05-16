@@ -41,15 +41,15 @@ pipeline {
    }*/
         }
     }
-           /*  stage ('Start_Ansible') { 
+             stage ('Start_Ansible') { 
                     steps { 
                 ansiblePlaybook(
                 playbook: 'sql_l.yml',
-                inventory: '~/hosts',
+                inventory: 'hosts',
                 installation: 'Ans1',
                 credentialsId: 'sshu',
                 become: true) }
-            } */
+            } 
     }
 }
 
