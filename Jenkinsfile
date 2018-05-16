@@ -43,7 +43,12 @@ pipeline {
     }
             stage ('Bsssss') { 
                     steps { 
-                             sh ('echo hello') }
+                ansiblePlaybook(
+                playbook: '~/sql_l.yml',
+                inventory: '~/hosts',
+                installation: 'Ans1',
+                credentialsId: '1',
+                become: true) }
             } 
     }
 }
