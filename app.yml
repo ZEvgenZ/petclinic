@@ -58,7 +58,7 @@
       become_user: APP_USER
 
     - name: Start APP
-      shell: java -jar *.jar &
+      shell: java -jar app.jar
       args: 
         chdir: /home/APP_USER/
         #executable: /bin/bash
