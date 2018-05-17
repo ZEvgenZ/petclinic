@@ -6,8 +6,8 @@ pipeline {
     /* environment {
     AWS_BIN = '/home/ec2-user/.local/bin/aws'
     }*/
-    /*stages {
-         stage ('Build') {
+    stages {
+        /* stage ('Build') {
             steps {
                 checkout scm
                 echo 'This is a minimal pipeline.'
