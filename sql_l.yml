@@ -22,47 +22,24 @@
           - mysql-common
           - python-mysqldb
 
-     - name: Start the MySQL service
-       service: 
-         name: mysql 
-         state: started
-         enabled: true    
-     - name: Create new db
-       mysql_db:
-         name: data
-         state: present
+    - name: Start the MySQL service
+      service: 
+        name: mysql 
+        state: started
+        enabled: true    
+    - name: Create new db
+      mysql_db:
+        name: data
+        state: present
     
-     - name: Create db user
-       mysql_user:
-         name: db_user
-         host: '192.168.%.%'
-         password: 123456
-         priv: 'pc.*:ALL,GRANT/data.*:ALL,GRANT/mysql.*:ALL,GRANT'
-         state: present
-       become: yes
-    # - name: Copy cnf file to root
-    #   template:
-    #     src: .my.cnf
-    #     dest: /root/.my.cnf
-    #     owner: root
-    #     mode: 0600
-    # - name: Copy cnf file
-    #   template:
-    #     src: .my.cnf
-    #     dest: /etc/mysql/mysql.conf.d/mysqld.cnf
-    #     owner: root
-    #     mode: 0600
-    #   notify:
-    #   - Restart MySQL
-     - name: Restart MySQL
-       service:
-         name: mysql
-         state: restarted
-    
- 
-  
-      
-      
+    - name: Create db user
+      mysql_user:
+        name: 'db_user'
+        host: '192.168.%.%'
+        password: '123456'
+        priv: 'pc.*:ALL,GRANT/data.*:ALL,GRANT/mysql.*:ALL,GRANT'
+        state: present
+      become: yes
     
     
 
