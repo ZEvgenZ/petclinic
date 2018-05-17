@@ -12,41 +12,41 @@
           - openjdk-8-jdk
       state: present
 
-     - name: hosts
-       template:
-         src: host1
-         dest: /etc/hosts
-         owner: root
-         mode: 0600          
+    - name: hosts
+      template:
+        src: host1
+        dest: /etc/hosts
+        owner: root
+        mode: 0600          
 
-    - name: Add the user 'APP_USER' with a specific uid and a primary group of 'admin'
-      user:
-        name: APP_USER
-        password: '$1$c59eedeb$wRjf60SqXl9n.eKueNM6Z0' # 123456
-        shell: /bin/bash
-        comment: APP_USER
-        append: yes
-        create_home: yes
-        #group: sudo
-        state: present
-
-
-    - name: Get my public IP from ipify.org
-      ipify_facts:
-
-    - name: URL to the web aplication
-      debug: msg='{{ ipify_public_ip }}'
+   - name: Add the user 'APP_USER' with a specific uid and a primary group of 'admin'
+     user:
+       name: APP_USER
+       password: '$1$c59eedeb$wRjf60SqXl9n.eKueNM6Z0' # 123456
+       shell: /bin/bash
+       comment: APP_USER
+       append: yes
+       create_home: yes
+       #group: sudo
+       state: present
 
 
-    - name: Check that user can connect to database
-      mysql_db:
-        login_user: 'db_user'
-        login_password: '123456'
-        login_host: 'db'
-        login_port: '3306'
-        name: 'data'
-        state: present
-       become_method: sudo
+   - name: Get my public IP from ipify.org
+     ipify_facts:
+
+   - name: URL to the web aplication
+     debug: msg='{{ ipify_public_ip }}'
+
+
+   - name: Check that user can connect to database
+     mysql_db:
+       login_user: 'db_user'
+       login_password: '123456'
+       login_host: 'db'
+       login_port: '3306'
+       name: 'data'
+       state: present
+      become_method: sudo
 
     
   
