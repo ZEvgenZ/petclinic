@@ -52,7 +52,7 @@
     - name: applic
       copy:
         src: "{{ item }}"
-        dest: /home/APP_USER/PROJECT_DIR/target/app.jar
+        dest: /home/APP_USER/app.jar
       with_fileglob:
         - target/*.jar
       become_user: APP_USER
