@@ -27,8 +27,8 @@ pipeline {
 	    //sh('/home/ubuntu/print.sh')
                         withAWS(region:'us-west-2'){
                                 sh('python3 start.py')} 
-                        echo 'Waiting 5 minutes for deployment to complete start inst'
-                        sleep 320 // seconds
+                        echo 'Waiting deployment to complete start inst'
+                        sleep 220 // seconds
 			}
                    
         }
