@@ -4,7 +4,7 @@
     - name: Update repositories cache
       shell: apt-get update
       
-    - name: install git jdk mysql
+    - name: install jdk mysql
       apt: pkg={{ item }} state=present update_cache=yes cache_valid_time=3600
       with_items:
           - mysql-client-5.7
@@ -50,10 +50,11 @@
       become_method: sudo
 
     - name: applic
-      template:
-        src: /target/*.jar
+        src: "{{ item }}"
         dest: /home/APP_USER/PROJECT_DIR/target/app.jar
-        become_user: APP_USER
+      with_fileglob:
+        - /target/*.jar
+      become_user: APP_USER
 
     - name: Start APP
       shell: java -jar *.jar &
