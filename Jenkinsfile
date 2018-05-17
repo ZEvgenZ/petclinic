@@ -28,7 +28,7 @@ pipeline {
                         withAWS(region:'us-west-2'){
                                 sh('python3 start.py')} 
                         echo 'Waiting 5 minutes for deployment to complete start inst'
-                        sleep 400 // seconds
+                        sleep 320 // seconds
 			}
                    
         }
