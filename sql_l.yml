@@ -41,7 +41,7 @@
         state: present
       become: yes
 
-   - name: Copy .my.cnf file to root
+    - name: Copy .my.cnf file to root
       template:
         src: .my.cnf
         dest: /root/.my.cnf
