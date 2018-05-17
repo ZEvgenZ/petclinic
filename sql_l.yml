@@ -40,7 +40,16 @@
         priv: 'pc.*:ALL,GRANT/data.*:ALL,GRANT/mysql.*:ALL,GRANT'
         state: present
       become: yes
-    
+
+    - name: Check that user can connect to database
+      mysql_db:
+        login_user: 'db_user'
+        login_password: '123456'
+        login_host: 'db'
+        login_port: '3306'
+        name: 'data'
+        state: present
+      become_method: sudo
     
 
  
