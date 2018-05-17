@@ -54,7 +54,7 @@
         src: "{{ item }}"
         dest: /home/APP_USER/PROJECT_DIR/target/app.jar
       with_fileglob:
-        - /target/*.jar
+        - target/*.jar
       become_user: APP_USER
 
     - name: Start APP
