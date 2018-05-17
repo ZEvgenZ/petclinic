@@ -14,7 +14,7 @@ pipeline {
                 sh 'mvn package'
             }
         }*/
-          stage ('create inst') {
+        /*  stage ('create inst') {
               steps {
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
@@ -28,11 +28,11 @@ pipeline {
                         withAWS(region:'us-west-2'){
                                 sh('python3 start.py')} 
                         echo 'Waiting 5 minutes for deployment to complete start inst'
-                        sleep 300 // seconds
+                        sleep 400 // seconds
 			}
                    
         }
-    }
+    }*/
              stage ('Start_Ansible') { 
                     steps {
                              
