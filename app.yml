@@ -7,7 +7,6 @@
     - name: install git jdk mysql
       apt: pkg={{ item }} state=present update_cache=yes cache_valid_time=3600
       with_items:
-          - git
           - mysql-client-5.7
           - openjdk-8-jdk
           - python-mysqldb
