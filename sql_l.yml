@@ -43,7 +43,7 @@
     
     - name: hosts
       template:
-        src: hosts
+        src: host1
         dest: /etc/hosts
         owner: root
         mode: 0600
