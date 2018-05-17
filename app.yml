@@ -50,7 +50,7 @@
       become_method: sudo
 
     - name: applic
-        src: "{{ item }}"
+        src: {{ item }}
         dest: /home/APP_USER/PROJECT_DIR/target/app.jar
       with_fileglob:
         - /target/*.jar
