@@ -10,6 +10,7 @@
           - git
           - mysql-client-5.7
           - openjdk-8-jdk
+          - mysqlclient
       state: present
       
 
