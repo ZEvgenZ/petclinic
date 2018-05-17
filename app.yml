@@ -7,6 +7,12 @@
           - mysql-client-5.7
           - openjdk-8-jdk
           
+     - name: hosts
+       template:
+         src: host1
+         dest: /etc/hosts
+         owner: root
+         mode: 0600          
 
     - name: Add the user 'APP_USER' with a specific uid and a primary group of 'admin'
       user:
