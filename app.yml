@@ -6,7 +6,9 @@
           - git
           - mysql-client-5.7
           - openjdk-8-jdk
-          
+           update_cache: yes
+           state: present
+           
      - name: hosts
        template:
          src: host1
