@@ -15,15 +15,17 @@ instances = ec2.create_instances(
         ImageId='ami-46a7da3e', 
         MinCount=1, 
         MaxCount=2,
-        InstanceType="t2.micro",
+        InstanceType="t2.micro",        
     KeyName='oRudenk',
-    
+
     NetworkInterfaces=[{'SubnetId': subnet, 'DeviceIndex': 0, 'AssociatePublicIpAddress': True, 'Groups': ['sg-6f437411']}])
-   
+       
 work =['db', 'app']
+
 i=0
 for instance in instances:
     instance.create_tags(Tags=[{"Key": "Name", "Value": work[i] }])
+    
     instance.wait_until_running()
     i = i+1
 i=0
