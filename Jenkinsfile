@@ -14,7 +14,7 @@ pipeline {
                 sh 'mvn package'
             }
         }*/
-        /*  stage ('create inst') {
+          stage ('create inst') {
               steps {
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
@@ -32,7 +32,7 @@ pipeline {
 			}
                    
         }
-    }*/
+    }
              stage ('Start_Ansible') { 
                     steps {
                              
