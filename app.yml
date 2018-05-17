@@ -1,8 +1,9 @@
 - hosts: app
+  become: yes
   tasks:
     - name: Update repositories cache
       shell: apt-get update
-      become: yes
+      
     - name: install git jdk mysql
       apt: pkg={{ item }} state=present update_cache=yes cache_valid_time=3600
       with_items:
@@ -10,6 +11,7 @@
           - mysql-client-5.7
           - openjdk-8-jdk
       state: present
+      
 
     - name: hosts
       template:
