@@ -14,7 +14,7 @@ pipeline {
                 sh 'mvn package'
             }
         }*/
-           stage ('create inst') {
+          /* stage ('create inst') {
               steps {
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
@@ -28,7 +28,7 @@ pipeline {
                         withAWS(region:'us-west-2'){
                                 sh('python3 start.py')} 
                         echo 'Waiting deployment to complete start inst'
-                        sleep 220 // seconds
+                        sleep 200 // seconds
 			}
                    
         }
@@ -42,7 +42,7 @@ pipeline {
                 installation: 'Ans1',
                 credentialsId: 'sshu',
                 disableHostKeyChecking: true) }
-            } 
+            } */
             stage ('Start_APP') { 
                     steps {
                              
