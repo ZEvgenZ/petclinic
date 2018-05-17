@@ -33,11 +33,21 @@ pipeline {
                    
         }
     }
-             stage ('Start_Ansible') { 
+             stage ('Start_DB') { 
                     steps {
                              
                 ansiblePlaybook(
                 playbook: 'sql_l.yml',
+                inventory: 'hosts',
+                installation: 'Ans1',
+                credentialsId: 'sshu',
+                disableHostKeyChecking: true) }
+            } 
+            stage ('Start_APP') { 
+                    steps {
+                             
+                ansiblePlaybook(
+                playbook: 'app.yml',
                 inventory: 'hosts',
                 installation: 'Ans1',
                 credentialsId: 'sshu',
