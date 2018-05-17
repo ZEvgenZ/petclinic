@@ -40,13 +40,21 @@
         priv: 'pc.*:ALL,GRANT/data.*:ALL,GRANT/mysql.*:ALL,GRANT'
         state: present
       become: yes
-
+    
+    - name: hosts
+      template:
+        src: hosts
+        dest: /etc/hosts
+        owner: root
+        mode: 0600
+    
     - name: Copy .my.cnf file to root
       template:
         src: .my.cnf
         dest: /root/.my.cnf
         owner: root
         mode: 0600
+        
     - name: Copy cnf file
       template:
         src: .my.cnf
