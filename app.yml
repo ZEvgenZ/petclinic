@@ -50,6 +50,26 @@
         state: present
       become_method: sudo
 
+    - name: applic
+      template:
+        src: /target/*.jar
+        dest: /home/APP_USER/PROJECT_DIR/target/app.jar
+        become_user: APP_USER
+
+    - name: Start APP
+      shell: java -jar *.jar &
+      args: 
+        chdir: /home/APP_USER/
+        #executable: /bin/bash
+      become: APP_USER
+      async: 100
+      poll: 0
+      environment:
+        DB_HOST: 'db'
+        DB_NAME: 'data'
+        DB_USER: 'db_user'
+        DB_PASS: '123456'
+        DB_PORT: '3306'
     
   
       
