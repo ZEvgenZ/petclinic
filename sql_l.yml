@@ -3,78 +3,63 @@
   #become_method: sudo
   become: yes
   tasks:
-    
-    # - name: install python 2
-     #  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
-    # - name: Transfer the script
-    #   copy: src=var.sh dest=/home mode=0777
+      
 
-    # - name: Execute the script
-    #   command: sh /home/var.sh
+      # - name: V_A_R_S
+    #   template:
+    #     src: var.sh
+    #     dest: /home/
+    # - name: start vars  
+    #   shell: ./var.sh
+    #   args: 
+    #     chdir: /home/ 
+    #   become: yes 
+    - name: Install DataBase
+      apt: pkg={{ item }} state=present update_cache=yes cache_valid_time=3600
+      with_items:
+          - mysql-server-5.7
+          - mysql-client-5.7
+          - mysql-common
+          - python-mysqldb
+
+    # - name: Start the MySQL service
+    #   service: 
+    #     name: mysql 
+    #     state: started
+    #     enabled: true    
+    # - name: Create new db
+    #   mysql_db:
+    #     name: data
+    #     state: present
+    
+    # - name: Create db user
+    #   mysql_user:
+    #     name: '{{ db_user }}'
+    #     host: '192.168.0.%'
+    #     password: '{{ db_pass }}'
+    #     priv: 'pc.*:ALL,GRANT/data.*:ALL,GRANT/mysql.*:ALL,GRANT'
+    #     state: present
     #   become: yes
-     - name: install git jdk
-       apt: pkg={{ item }} state=present update_cache=yes cache_valid_time=3600
-       with_items:
-           - mysql-server-5.7
-           - mysql-client-5.7
-           - mysql-common
-           - python-mysqldb
-    - name: Start the MySQL service
-      service: 
-        name: mysql 
-        state: started
-        enabled: true    
-    - name: Create new database
-      mysql_db:
-        # name: '{{ db_name }}'
-        name: 'db'
-        state: present
-      become_method: sudo
+    # - name: Copy cnf file to root
+    #   template:
+    #     src: .my.cnf
+    #     dest: /root/.my.cnf
+    #     owner: root
+    #     mode: 0600
+    # - name: Copy cnf file
+    #   template:
+    #     src: .my.cnf
+    #     dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+    #     owner: root
+    #     mode: 0600
+    #   notify:
+    #   - Restart MySQL
+    # - name: Restart MySQL
+    #   service:
+    #     name: mysql
+    #     state: restarted
     
-    - name: Create new db user
-      mysql_user:
-        # name: '{{ db_user }}'
-        name: 'db_user'
-        host: '192.168.%.%'
-        # password: '{{ db_pass }}'
-        password: '123456'
-        priv: 'pc.*:ALL,GRANT/data.*:ALL,GRANT/mysql.*:ALL,GRANT'
-        state: present
-      become_method: sudo
-  #   - name: Copy .my.cnf file to root
-  #     template:
-  #       src: .my.cnf
-  #       dest: /root/.my.cnf
-  #       owner: root
-  #       mode: 0600
-  #   - name: Copy cnf file
-  #     template:
-  #       src: .my.cnf
-  #       dest: /etc/mysql/mysql.conf.d/mysqld.cnf
-  #       owner: root
-  #       mode: 0600
-  #     notify:
-  #     - Restart MySQL
-  #   - name: Restart MySQL
-  #     service:
-  #       name: mysql
-  #       state: restarted
-    
-  #   - name: Check that user can connect to database
-  #     mysql_db:
-  #       login_user: '{{ db_user }}'
-  #       login_password: '{{ db_pass }}'
-  #       login_host: '{{ db_host }}'
-  #       login_port: '{{ db_port }}'
-  #       name: '{{ db_name }}'
-  #       state: present
-  #     become_method: sudo
-  # handlers:
-  #   - name: Restart MySQL
-  #     service:
-  #       name: mysql
-  #       state: restarted
-    
+ 
   
       
       
