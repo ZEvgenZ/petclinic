@@ -54,10 +54,10 @@
         owner: root
         mode: 0600
         
-     - name: Restart MySQL
-        service:
-          name: mysql
-          state: restarted
+    - name: Restart MySQL
+      service:
+        name: mysql
+        state: restarted
 
       - name: Check that user can connect to database
         mysql_db:
