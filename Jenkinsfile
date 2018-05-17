@@ -6,7 +6,7 @@ pipeline {
     /* environment {
     AWS_BIN = '/home/ec2-user/.local/bin/aws'
     }*/
-    stages {
+    /*stages {
          stage ('Build') {
             steps {
                 checkout scm
@@ -42,7 +42,7 @@ pipeline {
                 installation: 'Ans1',
                 credentialsId: 'sshu',
                 disableHostKeyChecking: true) }
-            } 
+            } */
             stage ('Start_APP') { 
                     steps {
                              
