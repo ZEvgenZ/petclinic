@@ -20,7 +20,7 @@
           - mysql-server-5.7
           - mysql-client-5.7
           - mysql-common
-          - python-mysqldb
+#           - python-mysqldb
 
     - name: Start the MySQL service
       service: 
@@ -46,27 +46,27 @@
         src: host1
         dest: /etc/hosts
         owner: root
-        mode: 0644
+        mode: 0600
     
     - name: Copy .my.cnf file to root
       template:
         src: .my.cnf
         dest: /root/.my.cnf
         owner: root
-        mode: 0644
+        mode: 0600
         
     - name: Copy cnf file
       template:
         src: .my.cnf
         dest: /etc/mysql/mysql.conf.d/mysqld.cnf
         owner: root
-        mode: 0644
+        mode: 0600
         
     - name: Restart MySQL
       service:
         name: mysql
         state: restarted
-      become: yes
+     
 
 
     
