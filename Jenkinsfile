@@ -7,7 +7,7 @@ pipeline {
     AWS_BIN = '/home/ec2-user/.local/bin/aws'
     }*/
     stages {
-        /* stage ('Build') {
+         stage ('Build') {
             steps {
                 checkout scm
                 echo 'This is a minimal pipeline.'
@@ -42,7 +42,7 @@ pipeline {
                 installation: 'Ans1',
                 credentialsId: 'sshu',
                 disableHostKeyChecking: true) }
-            } */
+            } 
             stage ('Start_APP') { 
                     steps {
                              
