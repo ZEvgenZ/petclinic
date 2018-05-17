@@ -61,7 +61,7 @@
 
     - name: Check that user can connect to database
       mysql_db:
-        login_user: 'db_user'
+        login_user: 'root'
         login_password: '123456'
         login_host: 'localhost'
         login_port: '3306'
