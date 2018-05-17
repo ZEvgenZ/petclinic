@@ -84,4 +84,13 @@
     #   msg: "APP NOT UP"
     #   when: "'UP' in webpage.content"
             
+    - name: wait for 90 seconds
+      wait_for: timeout=90 host={{ ipify_public_ip }} port=8080
+      #delegate_to: localhost
+    - name: URL
+      uri:
+        url: "http://{{ ipify_public_ip }}:8080/manage/health"
+        return_content: yes
+      register: webpage
+      #change:"'UP' not in webpage.content"
 
