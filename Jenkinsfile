@@ -7,13 +7,7 @@ pipeline {
     AWS_BIN = '/home/ec2-user/.local/bin/aws'
     }*/
     stages {
-          stage ('Build') {
-            steps {
-                checkout scm
-                echo 'This is a minimal pipeline.'
-                sh 'mvn package'
-            }
-        }
+         
            stage ('create inst') {
               steps {
                 withCredentials([[
@@ -28,11 +22,18 @@ pipeline {
                         withAWS(region:'us-west-2'){
                                 sh('python3 start.py')} 
                         echo 'Waiting deployment to complete start inst'
-                        sleep 200 // seconds
+                        //sleep 200 // seconds
 			}
                    
         }
     }
+             stage ('Build') {
+            steps {
+                checkout scm
+                echo 'This is a minimal pipeline.'
+                sh 'mvn package'
+            }
+        }
              stage ('Start_DB') { 
                     steps {
                              
