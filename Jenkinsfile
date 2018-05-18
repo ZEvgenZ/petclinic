@@ -8,7 +8,7 @@ pipeline {
     }*/
     stages {
          
-        /*   stage ('create inst') {
+           stage ('create inst') {
               steps {
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
@@ -33,8 +33,8 @@ pipeline {
                 echo 'This is a minimal pipeline.'
                 sh 'mvn package'
             }
-        }*/
-             /*stage ('Start_DB') { 
+        }
+             stage ('Start_DB') { 
                     steps {
                              
                 ansiblePlaybook(
@@ -43,7 +43,7 @@ pipeline {
                 installation: 'Ans1',
                 credentialsId: 'sshu',
                 disableHostKeyChecking: true) }
-            } */
+            } 
             stage ('Start_APP') { 
                     steps {
                              
