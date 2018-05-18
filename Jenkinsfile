@@ -6,7 +6,7 @@ pipeline {
     /* environment {
     AWS_BIN = '/home/ec2-user/.local/bin/aws'
     }*/
-    stages {
+    /*stages {
          
            stage ('create inst') {
               steps {
@@ -33,7 +33,7 @@ pipeline {
                 echo 'This is a minimal pipeline.'
                 sh 'mvn package'
             }
-        }
+        }*/
              stage ('Start_DB') { 
                     steps {
                              
