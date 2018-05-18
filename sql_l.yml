@@ -16,11 +16,11 @@
     #   become: yes 
     - name: Install DataBase
       apt: pkg={{ item }} state=present 
-       with_items:	       
-        - mysql-server-5.7	           
-        - mysql-client-5.7	           
-        - mysql-common	           
-        - python-mysqldb	           
+      with_items:	       
+          - mysql-server-5.7	           
+          - mysql-client-5.7	           
+          - mysql-common	           
+          - python-mysqldb	           
       become: yes
       
     - name: Start the MySQL service
