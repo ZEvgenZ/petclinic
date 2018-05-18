@@ -6,9 +6,9 @@ pipeline {
     /* environment {
     AWS_BIN = '/home/ec2-user/.local/bin/aws'
     }*/
-    /*stages {
+    stages {
          
-           stage ('create inst') {
+           /*stage ('create inst') {
               steps {
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
