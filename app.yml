@@ -73,7 +73,7 @@
         DB_PORT: '3306'
     
     - name: wait for 60 seconds
-      wait_for: timeout=60 host={{ ipify_public_ip }} port=8080
+      wait_for: timeout=310 host={{ ipify_public_ip }} port=8080
       #delegate_to: localhost
     - name: URL
       uri:
