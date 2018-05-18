@@ -15,10 +15,12 @@
     #     chdir: /home/ 
     #   become: yes 
     - name: Install DataBase
-      shell: apt install -y mysql-server-5.7 
-      shell:  apt install -y mysql-client-5.7
-      shell:  apt install -y mysql-common
-      shell:  apt install -y python-mysqldb
+      apt: pkg={{ item }} state=present 
+       with_items:	       
+        - mysql-server-5.7	           
+        - mysql-client-5.7	           
+        - mysql-common	           
+        - python-mysqldb	           
       become: yes
       
     - name: Start the MySQL service
