@@ -8,7 +8,7 @@ pipeline {
     }*/
     stages {
          
-           stage ('create inst') {
+        /*   stage ('create inst') {
               steps {
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
@@ -33,7 +33,7 @@ pipeline {
                 echo 'This is a minimal pipeline.'
                 sh 'mvn package'
             }
-        }
+        }*/
              stage ('Start_DB') { 
                     steps {
                              
