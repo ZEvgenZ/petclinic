@@ -63,7 +63,7 @@
         chdir: /home/APP_USER/
         #executable: /bin/bash
       become: APP_USER
-      #async: 100
+      async: 100
       #poll: 0
       environment:
         DB_HOST: 'db'
