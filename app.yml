@@ -72,20 +72,8 @@
         DB_PASS: '123456'
         DB_PORT: '3306'
     
-  
-    - name: Show Health
-          debug: msg='{{ webpage.json.status }}'
-    - name: Fail if UP is not in the page content
-      fail:
-        debug: 
-          msg: "APP NOT UP"
-      when: "'UP' not in webpage.content" #webpage.changed 
-    # - name: UP is in the page content
-    #   msg: "APP NOT UP"
-    #   when: "'UP' in webpage.content"
-            
-    - name: wait for 90 seconds
-      wait_for: timeout=90 host={{ ipify_public_ip }} port=8080
+    - name: wait for 60 seconds
+      wait_for: timeout=60 host={{ ipify_public_ip }} port=8080
       #delegate_to: localhost
     - name: URL
       uri:
@@ -93,4 +81,11 @@
         return_content: yes
       register: webpage
       #change:"'UP' not in webpage.content"
+    - name: Show Health
+      debug: msg='{{ webpage.json.status }}'
+    - name: Fail if UP is not in the page content
+      fail:
+        debug: 
+          msg: "APP NOT UP"
+      when: "'UP' not in webpage.content"
 
