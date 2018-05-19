@@ -3,6 +3,10 @@ pipeline {
     tools { 
         maven 'Maven 3.5'
       }
+       parameters {
+       string(name: 'quantity', defaultValue: '1', description: 'Quantity of app instances')
+        string(name: 'filter', defaultValue: 'vadim*', description: 'Filter keyword for security groups')}  
+        //${params.quantity} ${params.filter}"
     /* environment {
     AWS_BIN = '/home/ec2-user/.local/bin/aws'
     }*/
