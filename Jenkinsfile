@@ -8,7 +8,7 @@ pipeline {
     }*/
     stages {
          
-           /*stage ('create inst') {
+           stage ('create inst') {
               steps {
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
@@ -33,7 +33,7 @@ pipeline {
                 echo 'This is a minimal pipeline.'
                 sh 'mvn package'
             }
-        }*/
+        }
              stage ('Start_DB') { 
                     steps {
                              
@@ -55,6 +55,17 @@ pipeline {
                 disableHostKeyChecking: true) }
             } 
     }
+        stage ('Terminate instances') {
+            agent { label 'master' }
+                steps {
+                    sh """for i in \$(aws ec2 describe-instances \
+                    --filters 'Name=tag:Name,Values=jenkins-slave*' \
+                    --query 'Reservations[*].Instances[*].InstanceId' \
+                    --output=text); do aws ec2 terminate-instances \
+                    --instance-ids \$i; done""" }
+        }
+        
+       
 }
 
        
