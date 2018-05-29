@@ -1,7 +1,7 @@
 pipeline {
     agent {
-        # указываем, что выполнять задачу хотим внутри 
-        # Docker-контейнера на базе указанного образа:
+        //указываем, что выполнять задачу хотим внутри 
+        // Docker-контейнера на базе указанного образа:
         docker {
             image 'java:8-jdk'
         }
@@ -36,5 +36,5 @@ node {
             sh "docker service update --image repo.artifactory.bank/dev-backend:${env.BUILD_ID} SMB_dev-backend"
         }
     }
-*/
+
 }
