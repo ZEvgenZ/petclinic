@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Собираем') {
             steps {
-                sh 'mvn --version'
+                sh 'mvn package'
                 }
         }
         
