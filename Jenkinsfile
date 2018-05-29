@@ -3,7 +3,7 @@ pipeline {
         //указываем, что выполнять задачу хотим внутри 
         // Docker-контейнера на базе указанного образа:
         docker {
-            image 'java:8-jdk'
+            image 'maven'
         }
     }
     
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Собираем') {
             steps {
-                sh 'mvn package'
+                sh 'mvn --version'
                 }
         }
         
