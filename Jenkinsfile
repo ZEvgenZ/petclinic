@@ -36,5 +36,5 @@ node {
             sh "docker service update --image repo.artifactory.bank/dev-backend:${env.BUILD_ID} SMB_dev-backend"
         }
     }
-
 }
+*/
