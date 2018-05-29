@@ -8,12 +8,12 @@ pipeline {
     }
     
     stages {
-        stage('Стягиваем код из ГИТа') {
+        stage('Pull from Git') {
             steps {
                 checkout scm
             }
         }
-        stage('Собираем') {
+        stage('Package') {
             steps {
                 sh 'mvn package'
                 }
@@ -21,11 +21,17 @@ pipeline {
         
     }
 }
- /* 
+//ad5a78f7-c1af-4b37-a58f-ae20d9244457
+ 
 #_ Этап сборки нового Docker-образа и его загрузки с систему Artifactory:
 node {
-    stage('Собираем образ') {
-        docker.withRegistry("https://repo.artifactory.bank", "LoginToArtifactory") {
+    stage('Create im') {
+     def customImage = docker.build("my-image:${env.BUILD_ID}")
+            customImage.push()}
+ }
+docker.withRegistry('https://registry.example.com')
+            
+       /* docker.withRegistry("https://repo.artifactory.bank", "LoginToArtifactory") {
             def dkrImg = docker.build("repo.artifactory.bank/dev-backend:${env.BUILD_ID}")
             dkrImg.push()
             dkrImg.push('latest')
