@@ -15,21 +15,13 @@ pipeline {
         }
         stage('Собираем') {
             steps {
-                sh 'chmod +x ./gradlew'
-                sh './gradlew build -x test'
-            }
- 
-        }
-        stage('Тестируем') {
-            steps {
-                script {
-                    sh './gradlew test'
+                sh 'mvn package'
                 }
-            }
         }
+        
     }
 }
- 
+ /* 
 #_ Этап сборки нового Docker-образа и его загрузки с систему Artifactory:
 node {
     stage('Собираем образ') {
@@ -44,4 +36,5 @@ node {
             sh "docker service update --image repo.artifactory.bank/dev-backend:${env.BUILD_ID} SMB_dev-backend"
         }
     }
+*/
 }
