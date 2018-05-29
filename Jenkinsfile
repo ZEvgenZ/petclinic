@@ -22,7 +22,7 @@ pipeline {
     }
 }
 //ad5a78f7-c1af-4b37-a58f-ae20d9244457
- 
+// grebec/petclinic:latest
 #_ Этап сборки нового Docker-образа и его загрузки с систему Artifactory:
 node {
     stage('Create im') {
