@@ -1,12 +1,12 @@
 pipeline {
-    agent {
+   /*  agent {
         //указываем, что выполнять задачу хотим внутри 
         // Docker-контейнера на базе указанного образа:
         docker {
             image 'docker'
         }
     }
-    
+    */
     stages {
         stage('Pull from Git') {
             steps {
