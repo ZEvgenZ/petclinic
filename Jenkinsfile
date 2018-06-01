@@ -3,7 +3,7 @@ pipeline {
         //указываем, что выполнять задачу хотим внутри 
         // Docker-контейнера на базе указанного образа:
         docker {
-            image 'jpetazzo/dind'
+            image 'docker'
         }
     }
     
