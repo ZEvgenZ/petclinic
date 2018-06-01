@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                sh 'mvn package'
-               archive 'target/*.jar'
+               archiveArtifacts 'target/*.jar'
             }
  
         }
