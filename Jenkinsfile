@@ -1,20 +1,26 @@
 pipeline {
-        agent none
-         agent {
+        agent none  
+    stages {
+        stage('Get from GIT') {
+                agent {
         //указываем, что выполнять задачу хотим внутри 
         // Docker-контейнера на базе указанного образа:
         docker {
             image 'maven'
         }
     }
-    
-    stages {
-        stage('Get from GIT') {
             steps {
                 checkout scm
             }
         }
         stage('Build') {
+                 agent {
+        //указываем, что выполнять задачу хотим внутри 
+        // Docker-контейнера на базе указанного образа:
+        docker {
+            image 'maven'
+        }
+    }
             steps {
                sh 'mvn package'
               // archiveArtifacts 'target/*.jar'
@@ -40,15 +46,13 @@ pipeline {
                 }
  
         }         
-   }
-   stages {
-        stage('LSWORK') {
+   
+          stage('LSWORK') {
             steps { 
                 sh 'cd /var/lib/jenkins/workspace/petclinic/target/ && ls -la'
-            }
-        }
+         }
    }
-    }
+   }
 /*
 #_ Этап сборки нового Docker-образа и его загрузки с систему Artifactory:
 node {
