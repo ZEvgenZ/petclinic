@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('Get from GIT') {
                 agent {
-        //указываем, что выполнять задачу хотим внутри 
-        // Docker-контейнера на базе указанного образа:
+      
         docker {
             image 'maven'
         }
@@ -15,8 +14,7 @@ pipeline {
         }
         stage('Build') {
                  agent {
-        //указываем, что выполнять задачу хотим внутри 
-        // Docker-контейнера на базе указанного образа:
+   
         docker {
             image 'maven'
         }
@@ -27,22 +25,10 @@ pipeline {
             }
  
         }
-           /* stage('Copy Archive') {
-         steps {
-             script {
-                 step ([$class: 'CopyArtifact',
-                        projectName: 'petclinic',
-                        filter: "target/*.jar",
-                   target: '/home/ubuntu/app']);
-             }
-        
-        }
-    }
-   */
-   stage('LS') {
+     
+       stage('LS') {
                       agent {
-        //указываем, что выполнять задачу хотим внутри 
-        // Docker-контейнера на базе указанного образа:
+       
         docker {
             image 'maven'
         }
@@ -51,10 +37,9 @@ pipeline {
                 sh 'cd /var/lib/jenkins/workspace/petclinic/target/ && ls -la'
                
                 }
- 
-        }         
+         }         
    
-          stage('LSWORK') {
+   stage('LSWORK') {
                   agent any
             steps { 
                 sh 'cd /var/lib/jenkins/workspace/petclinic/target/ && ls -la'
@@ -86,3 +71,15 @@ node {
     }
 }
 */
+      /* stage('Copy Archive') {
+         steps {
+             script {
+                 step ([$class: 'CopyArtifact',
+                        projectName: 'petclinic',
+                        filter: "target/*.jar",
+                   target: '/home/ubuntu/app']);
+             }
+        
+        }
+    }
+   */
