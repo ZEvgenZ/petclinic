@@ -3,19 +3,19 @@ pipeline {
         //указываем, что выполнять задачу хотим внутри 
         // Docker-контейнера на базе указанного образа:
         docker {
-            image 'maven'
+            image 'jpetazzo/dind'
         }
     }
     
     stages {
-        stage('Pull from Git') {
+        /*stage('Pull from Git') {
             steps {
                 checkout scm
             }
-        }
+      */  }
         stage('Package') {
             steps {
-                sh 'mvn package'
+                sh 'Docker build .'
                 }
         }
         
