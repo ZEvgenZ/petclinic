@@ -1,5 +1,7 @@
+FROM jpetazzo/dind
+git pull https://github.com/Rudya93/spring-petclinic
+
 FROM maven:latest as builder
-ENTRYPOINT [ "/bin/sh" ]
 WORKDIR /app
 COPY . .
 RUN cd spring-petclinic && mvn package -Dmaven.test.skip=true
