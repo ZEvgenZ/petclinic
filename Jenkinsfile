@@ -1,5 +1,6 @@
 pipeline {
-    agent {
+        agent none
+         agent {
         //указываем, что выполнять задачу хотим внутри 
         // Docker-контейнера на базе указанного образа:
         docker {
@@ -39,6 +40,13 @@ pipeline {
                 }
  
         }         
+   }
+   stages {
+        stage('LSWORK') {
+            steps { 
+                sh 'cd /var/lib/jenkins/workspace/petclinic/target/ && ls -la'
+            }
+        }
    }
     }
 /*
