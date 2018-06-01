@@ -20,10 +20,7 @@ pipeline {
             }
  
         }
-        
-        }
-    }
- stage('Copy Archive') {
+            stage('Copy Archive') {
          steps {
              script {
                  step ([$class: 'CopyArtifact',
@@ -31,6 +28,10 @@ pipeline {
                  filter: "target/*.jar",
                  target: 'app']);
              }
+        
+        }
+    }
+ 
          }
 /*
 #_ Этап сборки нового Docker-образа и его загрузки с систему Artifactory:
