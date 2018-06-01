@@ -60,6 +60,12 @@ pipeline {
                 sh 'cd /var/lib/jenkins/workspace/petclinic/target/ && ls -la'
          }
    }
+            stage('LSWORK') {
+                  agent any
+            steps { 
+                sh 'docker build . test:test'
+         }
+   }
    }
 }     
 /*
