@@ -40,6 +40,13 @@ pipeline {
     }
    */
    stage('LS') {
+                      agent {
+        //указываем, что выполнять задачу хотим внутри 
+        // Docker-контейнера на базе указанного образа:
+        docker {
+            image 'maven'
+        }
+    }
             steps {
                 sh 'cd /var/lib/jenkins/workspace/petclinic/target/ && ls -la'
                
