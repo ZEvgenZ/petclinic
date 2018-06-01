@@ -47,7 +47,7 @@ pipeline {
             stage('docker_build') {
                   agent any
             steps { 
-                sh 'docker build . test:test'
+                sh 'docker build -t test:test .'
          }
             }           
    
