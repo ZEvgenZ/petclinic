@@ -1,5 +1,5 @@
 pipeline {
-        agent any 
+        agent none 
     stages {
         stage('Get from GIT') {
                 agent {
@@ -55,6 +55,7 @@ pipeline {
         }         
    
           stage('LSWORK') {
+                  agent any
             steps { 
                 sh 'cd /var/lib/jenkins/workspace/petclinic/target/ && ls -la'
          }
