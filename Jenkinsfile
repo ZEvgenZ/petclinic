@@ -16,12 +16,22 @@ pipeline {
         stage('Build') {
             steps {
                sh 'mvn package'
+               archive 'target/*.jar'
             }
  
         }
         
         }
     }
+ stage('Copy Archive') {
+         steps {
+             script {
+                 step ([$class: 'CopyArtifact',
+                 projectName: 'petclinic',
+                 filter: "target/*.jar",
+                 target: 'app']);
+             }
+         }
 /*
 #_ Этап сборки нового Docker-образа и его загрузки с систему Artifactory:
 node {
