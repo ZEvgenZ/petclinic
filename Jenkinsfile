@@ -41,9 +41,8 @@ pipeline {
    
    stage('LSWORK') {
                   agent any
-            steps { 
-                sh 'cd /var/lib/jenkins/workspace/petclinic/target/ && ls -la'
-         }
+            steps {sh 'cd /var/lib/jenkins/workspace/petclinic/target/ && ls -la'}
+   }
    
             stage('docker_build') {
                   agent any
@@ -51,7 +50,7 @@ pipeline {
                 sh 'docker build . test:test'
          }
             }           
-   }
+   
    }
 }     
 /*
