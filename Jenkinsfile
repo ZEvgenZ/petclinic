@@ -20,7 +20,7 @@ pipeline {
             }
  
         }
-            stage('Copy Archive') {
+           /* stage('Copy Archive') {
          steps {
              script {
                  step ([$class: 'CopyArtifact',
@@ -31,7 +31,15 @@ pipeline {
         
         }
     }
-    }
+   */
+   stage('LS') {
+            steps {
+                sh 'cd /var/lib/jenkins/workspace/petclinic/target/ && ls -la'
+               
+                }
+ 
+        }         
+   }
     }
 /*
 #_ Этап сборки нового Docker-образа и его загрузки с систему Artifactory:
