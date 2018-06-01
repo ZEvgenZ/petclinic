@@ -12,7 +12,8 @@ pipeline {
             steps {
                 checkout scm
             }
-      */  }
+        }
+        */
         stage('Package') {
             steps {
                 sh 'Docker build .'
