@@ -1,5 +1,5 @@
 FROM jpetazzo/dind
-RUN git pull https://github.com/Rudya93/spring-petclinic
+# RUN git pull https://github.com/Rudya93/spring-petclinic
 
 FROM maven:latest as builder
 WORKDIR /app
