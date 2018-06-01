@@ -1,4 +1,5 @@
 FROM maven:latest as builder
+ENTRYPOINT [ "/bin/sh" ]
 WORKDIR /app
 COPY . .
 RUN cd spring-petclinic && mvn package -Dmaven.test.skip=true
