@@ -8,12 +8,12 @@ pipeline {
     }
     
     stages {
-        stage('Стягиваем код из ГИТа') {
+        stage('Get from GIT') {
             steps {
                 checkout scm
             }
         }
-        stage('Собираем') {
+        stage('Build') {
             steps {
                sh 'mvn package'
             }
@@ -22,4 +22,20 @@ pipeline {
         
         }
     }
-
+/*
+#_ Этап сборки нового Docker-образа и его загрузки с систему Artifactory:
+node {
+    stage('Собираем образ') {
+        docker.withRegistry("https://repo.artifactory.bank", "LoginToArtifactory") {
+            def dkrImg = docker.build("repo.artifactory.bank/dev-backend:${env.BUILD_ID}")
+            dkrImg.push()
+            dkrImg.push('latest')
+        }
+	}
+    stage('Заливаем его в Artifactory') {
+        docker.withRegistry("https://repo.artifactory.bank", "LoginToArtifactory") {
+            sh "docker service update --image repo.artifactory.bank/dev-backend:${env.BUILD_ID} SMB_dev-backend"
+        }
+    }
+}
+*/
