@@ -8,12 +8,12 @@ pipeline {
     }
     
     stages {
-        /*stage('Pull from Git') {
+        stage('Pull from Git') {
             steps {
                 checkout scm
             }
         }
-        */
+        
         stage('Package') {
             steps {
                 sh 'Docker build .'
