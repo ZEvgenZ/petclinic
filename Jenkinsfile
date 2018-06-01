@@ -26,7 +26,7 @@ pipeline {
                  step ([$class: 'CopyArtifact',
                         projectName: 'petclinic',
                         filter: "target/*.jar",
-                   target: 'app']);
+                   target: '/home/ubuntu/app']);
              }
         
         }
