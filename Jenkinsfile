@@ -1,7 +1,26 @@
 pipeline {
         agent none 
     stages {
-        stage('Get from GIT') {
+         stage ('create inst') { agent any
+              steps {
+                withCredentials([[
+            $class: 'AmazonWebServicesCredentialsBinding',
+            credentialsId: 'adc00aa9-73ed-456f-bcd1-1a8cfdaba58b',
+            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+        ]]) {
+            sh ('AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=us-west-2')
+            //sh ('AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=us-west-2 ${AWS_BIN}')
+	    //sh('/home/ubuntu/print.sh')
+                        withAWS(region:'us-west-2'){
+                                sh('python3 start.py')} 
+                        echo 'Waiting deployment to complete start inst'
+                        //sleep 200 // seconds
+			}
+                   
+        }
+    }
+            stage('Get from GIT') {
                 agent {
       
         docker {
@@ -40,32 +59,4 @@ pipeline {
    
    }
 }     
-/*
-#_ Этап сборки нового Docker-образа и его загрузки с систему Artifactory:
-node {
-    stage('Собираем образ') {
-        docker.withRegistry("https://repo.artifactory.bank", "LoginToArtifactory") {
-            def dkrImg = docker.build("repo.artifactory.bank/dev-backend:${env.BUILD_ID}")
-            dkrImg.push()
-            dkrImg.push('latest')
-        }
-	}
-    stage('Заливаем его в Artifactory') {
-        docker.withRegistry("https://repo.artifactory.bank", "LoginToArtifactory") {
-            sh "docker service update --image repo.artifactory.bank/dev-backend:${env.BUILD_ID} SMB_dev-backend"
-        }
-    }
-}
-*/
-      /* stage('Copy Archive') {
-         steps {
-             script {
-                 step ([$class: 'CopyArtifact',
-                        projectName: 'petclinic',
-                        filter: "target/*.jar",
-                   target: '/home/ubuntu/app']);
-             }
-        
-        }
-    }
-   */
+
