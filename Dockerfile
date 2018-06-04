@@ -15,7 +15,7 @@ COPY --chown=user:user target/*.jar ./pc.jar
 ENV DB_USER=myuser
 ENV DB_HOST=mysql
 ENV DB_PASS=1234
-ENV DB_NAME=pc
+ENV DB_NAME=db
 ENV DB_PORT=3306
 EXPOSE 8080
 # ENTRYPOINT [ "/bin/sh" ]
