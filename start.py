@@ -20,7 +20,7 @@ instances = ec2.create_instances(
 
     NetworkInterfaces=[{'SubnetId': subnet, 'DeviceIndex': 0, 'AssociatePublicIpAddress': True, 'Groups': ['sg-e5379394']}])
        
-work =['db', 'app']
+work =['app', 'db']
 
 i=0
 for instance in instances:
