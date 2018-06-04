@@ -12,7 +12,7 @@ key_pair = 'oRudenk'
 subnet ='subnet-bfec75c6'
 
 instances = ec2.create_instances(
-        ImageId='ami-46a7da3e', 
+        ImageId='ami-31394949', 
         MinCount=1, 
         MaxCount=1,
         InstanceType="t2.micro",        
