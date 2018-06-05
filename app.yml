@@ -19,6 +19,7 @@
         - wget
         - git
         - docker
+        - python-pip
 
     - name: pip 
       shell: pip install docker-py           
