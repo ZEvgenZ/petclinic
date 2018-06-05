@@ -21,5 +21,11 @@
         - docker
 
             
-    - name: run 
-      shell: service docker restart && usermod -a -G docker ec2-user 
+   # - name: run 
+   #   shell: usermod -a -G docker ec2-user 
+    - name: Restart docker
+      service:
+        name: docker
+        state: restarted 
+    - name: qqqq
+      shell: docker run hello-world
