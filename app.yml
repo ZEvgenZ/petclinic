@@ -1,0 +1,26 @@
+- hosts: app
+  #remote_user: vagrant
+  #become_method: sudo
+  become: yes
+  tasks:
+
+    - name: Update yum
+      yum:
+        name: '*'
+        state: latest
+        update_cache: yes
+        
+    - name: Install packages
+      yum:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+        loop:
+          - wget
+          - git
+        
+    - name: install and run maven build
+      shell: 
+        yum install -y --setopt=obsoletes=0 \
+        docker-ce-17.03.1.ce-1.el7.centos \
+        docker-ce-selinux-17.03.1.ce-1.el7.centos
