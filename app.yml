@@ -30,5 +30,5 @@
     - name: data container
       docker:
         name: mydata
-        image: hello-world
+        image: ubuntu
         state: started
