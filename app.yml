@@ -20,7 +20,8 @@
         - git
         - docker
 
-            
+    - name: pip 
+      shell: pip install docker-py           
    # - name: run 
    #   shell: usermod -a -G docker ec2-user 
     - name: Restart docker
@@ -32,4 +33,7 @@
         name: mydata
         image: ubuntu
         state: started
+        
+        
+    
 
