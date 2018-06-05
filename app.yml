@@ -32,8 +32,11 @@
         name: docker
         state: restarted 
     - name: data container
-      script: start.sh 
-        
+      docker:
+        name: mydata
+        image: busybox
+        state: started
+
         
     
 
