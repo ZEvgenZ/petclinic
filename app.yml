@@ -18,7 +18,8 @@
       loop:
         - wget
         - git
+        - docker
 
             
-    - name: docker inst 
-      shell: curl -sSL get.docker.com  | sh 
+    - name: run 
+      shell: service docker restart && usermod -a -G docker ec2-user 
