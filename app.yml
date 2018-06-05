@@ -32,9 +32,9 @@
         name: docker
         state: restarted 
     - name: data container
-      docker:
+      docker_container:
         name: mydata
-        image: busybox
+        image: ubuntu
         state: started
 
         
