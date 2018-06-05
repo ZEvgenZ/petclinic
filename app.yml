@@ -27,8 +27,10 @@
    #    service:
    #      name: docker
    #      state: restarted 
-    - name: data container
-      docker:
-        name: mydata
-        image: ubuntu
-        state: started
+   # - name: data container
+   #   docker:
+   #     name: mydata
+   #     image: ubuntu
+   #     state: started
+     - name: run 
+       shell: docker info  
