@@ -23,10 +23,10 @@
             
    # - name: run 
    #   shell: usermod -a -G docker ec2-user 
-     - name: Restart docker
-       service:
-         name: docker
-         state: restarted 
+    - name: Restart docker
+      service:
+        name: docker
+        state: restarted 
    # - name: data container
    #   docker:
    #     name: mydata
