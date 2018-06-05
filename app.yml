@@ -27,6 +27,8 @@
    #    service:
    #      name: docker
    #      state: restarted 
-    - name: qqqq
-      shell: docker run hello-world
-      become: yes
+    - name: data container
+      docker:
+        name: mydata
+        image: hello-world
+        state: started
