@@ -57,8 +57,8 @@ pipeline {
             }
             }           
      stage ('Start_APP') { 
-                    steps {
-                             
+             agent any       
+             steps {      
                 ansiblePlaybook(
                 playbook: 'app.yml',
                 inventory: 'hosts',
