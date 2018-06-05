@@ -56,7 +56,17 @@ pipeline {
                     }
             }
             }           
-   
+     stage ('Start_APP') { 
+                    steps {
+                             
+                ansiblePlaybook(
+                playbook: 'app.yml',
+                inventory: 'hosts',
+                installation: 'Ans1',
+                credentialsId: 'sshu',
+                disableHostKeyChecking: true) }
+            } 
+            
    }
 }     
 
