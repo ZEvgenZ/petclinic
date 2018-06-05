@@ -20,8 +20,8 @@
         - git
         - docker
         - python-pip
-   - name: data container
-     script: start.sh     
+     - name: data container
+       script: start.sh     
 
     - name: pip 
       shell: pip install docker-py           
