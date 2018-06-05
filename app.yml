@@ -30,7 +30,7 @@
         name: docker
         state: restarted 
     - name: data container
-      command: docker run hello-world
+      script: start.sh
         
         
     
