@@ -24,9 +24,9 @@
     
 
     - name: pip 
-      shell: pip install docker-py           
-   # - name: run 
-   #   shell: usermod -a -G docker ec2-user 
+      shell: pip install docker-py && pip install docker-compose          
+    - name: add user to docker 
+      shell: usermod -a -G docker ec2-user 
     - name: Restart docker
       service:
         name: docker
