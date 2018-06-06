@@ -1,7 +1,7 @@
 pipeline {
         agent none 
     stages {
-         stage ('create inst') { agent any
+         /* stage ('create inst') { agent any
               steps {
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
@@ -55,7 +55,7 @@ pipeline {
                  sh 'docker push grebec/app:${BUILD_NUMBER}'
                     }
             }
-            }          
+            } */         
      stage ('Start_APP') { 
              agent any       
              steps {      
