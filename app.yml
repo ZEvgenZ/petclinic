@@ -32,10 +32,7 @@
         name: docker
         state: restarted 
     - name: data container
-      docker_container:
-        name: mydata
-        image: ubuntu
-        state: started
+      shell: docker-compose up -d
 
         
     
