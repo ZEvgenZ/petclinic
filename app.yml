@@ -24,9 +24,11 @@
     
 
     - name: pip 
-      shell: pip install docker-compose          
+      shell: pip install docker-compose
+      state: present
     - name: add user to docker 
-      shell: usermod -a -G docker ec2-user 
+      shell: usermod -a -G docker ec2-user
+      state: present
     - name: Restart docker
       service:
         name: docker
