@@ -50,7 +50,7 @@ pipeline {
             stage('docker_build') {
                   agent any
             steps { 
-                sh 'docker build -t grebec/app:${BUILD_NUMBER} .'
+                sh 'docker build -t grebec/app:${BUILD_NUMBER} -t grebec/app:latest .'
                 sh 'docker images'
                 withDockerRegistry([ credentialsId: "ad5a78f7-c1af-4b37-a58f-ae20d9244457", url: ""]) {
                  sh 'docker push grebec/app:${BUILD_NUMBER}'
