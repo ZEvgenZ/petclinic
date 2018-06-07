@@ -4,11 +4,14 @@ services:
     image: mysql
     environment:
       - MYSQL_USERNAME=test
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=1234
     #ports: 3306:3306
   app:
-    image: ubuntu
-    command: ping db
+    image: grebec/app
+   # command: ping db
     ports:
-      - "5000:5000"
+      - "8080:8080"
     #volumes:
     #  - .:/code
