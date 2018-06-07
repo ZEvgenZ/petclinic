@@ -56,7 +56,7 @@ pipeline {
                  sh 'docker push grebec/app:${BUILD_NUMBER}'
                     }
             }
-            } */         
+            }          
      stage ('Start_APP') { 
              agent any       
              steps {      
