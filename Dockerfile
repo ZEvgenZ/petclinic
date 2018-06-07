@@ -19,4 +19,4 @@ ENV DB_NAME=db
 ENV DB_PORT=3306
 EXPOSE 8080
 # ENTRYPOINT [ "/bin/sh" ]
-CMD ["java","-jar","/app/spring-petclinic/target/pc.jar"]
+CMD ["java","-jar","./pc.jar"]
