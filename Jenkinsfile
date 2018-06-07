@@ -52,8 +52,9 @@ pipeline {
             steps { 
                 sh 'docker build -t grebec/app:${BUILD_NUMBER} .'
                 sh 'docker images'
+                sh 'docker tag grebec/app:${BUILD_NUMBER} grebec/app:latest'    
                 withDockerRegistry([ credentialsId: "ad5a78f7-c1af-4b37-a58f-ae20d9244457", url: ""]) {
-                 sh 'docker push grebec/app:${BUILD_NUMBER} -t grebec/app:latest'
+                 sh 'docker push grebec/app:latest'
                     }
             }
             }          
