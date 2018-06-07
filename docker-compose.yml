@@ -1,11 +1,13 @@
 version: "2"
 services:
   db:
-    image: hello-world
+    image: mysql
+    environment:
+      - MYSQL_USERNAME=test
     #ports: 3306:3306
   app:
     image: ubuntu
-    #command: 
+    command: ping db
     ports:
       - "5000:5000"
     #volumes:
