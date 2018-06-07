@@ -13,7 +13,7 @@ RUN  addgroup -g 1000 -S user && \
 USER user
 COPY --chown=user:user target/*.jar ./pc.jar
 ENV DB_USER=myuser
-ENV DB_HOST=mysql
+ENV DB_HOST=db
 ENV DB_PASS=1234
 ENV DB_NAME=db
 ENV DB_PORT=3306
