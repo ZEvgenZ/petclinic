@@ -45,7 +45,7 @@
         owner: ec2-user
         mode: 0600    
     - name: restart systemd 
-      shell: systemctl daemon-reload && enable docker-compose@myservice
+      shell: systemctl daemon-reload && systemctl enable docker-compose@myservice
       
     - name: Start Compose
       service:
