@@ -33,16 +33,24 @@
       service:
         name: docker
         state: restarted 
+    - name: service copy
+      copy:
+        src: docker-compose@.service
+        dest: /etc/systemd/system/docker-compose@.service
+        mode: 0600    
     - name: copy
       copy:
         src: docker-compose.yml
         dest: /home/ec2-user/docker-compose.yml
         owner: ec2-user
         mode: 0600    
-    - name: data container
-      shell: docker-compose up -d
-      args: 
-        chdir: /home/ec2-user/
+    - name: restart systemd 
+      shell: systemctl daemon-reload && enable docker-compose@myservice
+      
+    - name: Start Compose
+      service:
+        name: docker-compose@myservice
+        state: started       
 
         
     
