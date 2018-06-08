@@ -1,7 +1,7 @@
 pipeline {
         agent none 
     stages {
-          stage ('create inst') { agent any
+          /*stage ('create inst') { agent any
               steps {
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
@@ -36,7 +36,7 @@ pipeline {
                 withDockerRegistry([ credentialsId: "ad5a78f7-c1af-4b37-a58f-ae20d9244457", url: ""]) 
                 { sh 'docker push grebec/app:latest'}
             }
-            }          
+            }  */        
                 stage ('Start_APP') { agent any       
              steps {      
                 ansiblePlaybook(
