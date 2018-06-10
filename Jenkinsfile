@@ -5,7 +5,7 @@ pipeline {
               steps {
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
-            credentialsId: 'adc00aa9-73ed-456f-bcd1-1a8cfdaba58b',
+            credentialsId: '321',
             accessKeyVariable: 'AWS_ACCESS_KEY_ID',
             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
         ]]) 
@@ -30,11 +30,11 @@ pipeline {
        
             stage('docker_build') {agent any
             steps { 
-                sh 'docker build -t grebec/app:${BUILD_NUMBER} .'
+                sh 'docker build -t zevgenz/petclinic:${BUILD_NUMBER} .'
                 sh 'docker images'
-                sh 'docker tag grebec/app:${BUILD_NUMBER} grebec/app:latest'    
-                withDockerRegistry([ credentialsId: "ad5a78f7-c1af-4b37-a58f-ae20d9244457", url: ""]) 
-                { sh 'docker push grebec/app:latest'}
+                sh 'docker tag zevgenz/petclinic:${BUILD_NUMBER} zevgenz/petclinic:latest'    
+                withDockerRegistry([ credentialsId: "ID_DockerHub", url: ""]) 
+                { sh 'docker push zevgenz/petclinic:latest'}
             }
             }          
                 stage ('Start_APP') { agent any       
@@ -43,7 +43,7 @@ pipeline {
                 playbook: 'app.yml',
                 inventory: 'hosts',
                 installation: 'Ans1',
-                credentialsId: 'sshu',
+                credentialsId: 'AWS_ssh_key',
                 disableHostKeyChecking: true) }
             } 
    }
