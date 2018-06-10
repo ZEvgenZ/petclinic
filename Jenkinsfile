@@ -11,10 +11,10 @@ pipeline {
         ]]) 
                       {
             sh ('> hosts ')            
-            sh ('AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=us-west-2')
+            sh ('AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=us-east-2')
             //sh ('AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=us-west-2 ${AWS_BIN}')
 	    //sh('/home/ubuntu/print.sh')
-                        withAWS(region:'us-west-2'){
+                        withAWS(region:'us-east-2'){
                                 sh('python3.5 start.py')} 
                         //echo 'Waiting deployment to complete start inst'
                         //sleep 200 // seconds
