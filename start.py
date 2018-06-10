@@ -6,19 +6,19 @@ keypairs = low_level_client.describe_key_pairs()
 
 
 # Go to high level
-ec2 = boto3.resource('ec2', region_name = 'us-west-2')
+ec2 = boto3.resource('ec2', region_name = 'us-east-2')
 
-key_pair = 'oRudenk'
-subnet ='subnet-bfec75c6'
+key_pair = 'aws_ssh_key'
+subnet ='subnet-6dfc4017'
 
 instances = ec2.create_instances(
         ImageId='ami-31394949', 
         MinCount=1, 
         MaxCount=1,
         InstanceType="t2.micro",        
-    KeyName='oRudenk',
+    KeyName='aws_ssh_key',
 
-    NetworkInterfaces=[{'SubnetId': subnet, 'DeviceIndex': 0, 'AssociatePublicIpAddress': True, 'Groups': ['sg-e5379394']}])
+    NetworkInterfaces=[{'SubnetId': subnet, 'DeviceIndex': 0, 'AssociatePublicIpAddress': True, 'Groups': ['sg-bfe75ad5']}])
        
 work =['app', 'db']
 
