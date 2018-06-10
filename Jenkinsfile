@@ -1,26 +1,43 @@
 pipeline {
         agent none 
     stages {
-          stage ('create inst') { agent any
-              steps {
+            stage ('list & instances up') {
+            agent any
+
+            steps { 
                 withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
             credentialsId: '321',
             accessKeyVariable: 'AWS_ACCESS_KEY_ID',
             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-        ]]) 
-                      {
-            sh ('> hosts ')            
-            sh ('AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=us-east-2')
-            //sh ('AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=us-west-2 ${AWS_BIN}')
-	    //sh('/home/ubuntu/print.sh')
-                        withAWS(region:'us-east-2'){
-                                sh('python3.5 start.py')} 
-                        //echo 'Waiting deployment to complete start inst'
-                        //sleep 200 // seconds
-			}
-               }
-           }
+        ]]) {
+            sh ('> hosts ')
+            sh 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=us-east-2 python3 ./start.py' 
+            }
+            //sleep 150 // seconds
+            }
+        }
+        //######################################################
+        //   stage ('create inst') { agent any
+        //       steps {
+        //         withCredentials([[
+        //     $class: 'AmazonWebServicesCredentialsBinding',
+        //     credentialsId: '321',
+        //     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+        //     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+        // ]]) 
+        //               {
+        //     sh ('> hosts ')            
+        //     sh ('AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=us-east-2')
+        //     //sh ('AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=us-west-2 ${AWS_BIN}')
+	    // //sh('/home/ubuntu/print.sh')
+        //                 withAWS(region:'us-east-2'){
+        //                         sh('python3.5 start.py')} 
+        //                 //echo 'Waiting deployment to complete start inst'
+        //                 //sleep 200 // seconds
+		// 	}
+        //        }
+        //    }
             stage('Checkout and build') {agent { docker {image 'maven'}}
             steps {
                 checkout scm
