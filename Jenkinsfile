@@ -54,15 +54,29 @@ pipeline {
                 { sh 'docker push zevgenz/petclinic:latest'}
             }
             }          
-                stage ('Start_APP') { agent any       
-             steps {      
-                ansiblePlaybook(
-                playbook: 'app.yml',
-                inventory: 'hosts',
-                installation: 'Ans1',
-                credentialsId: 'AWS_ssh_key',
-                disableHostKeyChecking: true) }
-            } 
+            //     stage ('Start_APP') { agent any       
+            //  steps {      
+            //     ansiblePlaybook(
+            //     playbook: 'app.yml',
+            //     inventory: 'hosts',
+            //     installation: 'Ans1',
+            //     credentialsId: 'AWS_ssh_key',
+            //     disableHostKeyChecking: true) }
+            // } 
+
+            stage ('use ansible') {
+            
+            agent any
+
+            steps {
+                withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'AWS_ssh_key',
+                                                             keyFileVariable: 'SSH_KEY_FOR_ABC')]) {
+                  //create database
+                  sh "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ./hosts --private-key=${SSH_KEY_FOR_ABC}  ./app.yml"
+                }
+
+            }
+        }
    }
 }     
 
