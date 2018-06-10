@@ -12,7 +12,7 @@ key_pair = 'aws_ssh_key'
 subnet ='subnet-6dfc4017'
 
 instances = ec2.create_instances(
-        ImageId='ami-31394949', 
+        ImageId='ami-2a0f324f', 
         MinCount=1, 
         MaxCount=1,
         InstanceType="t2.micro",        
